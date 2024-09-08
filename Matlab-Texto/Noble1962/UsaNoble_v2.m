@@ -12,10 +12,15 @@
   Y : matriz de dimensión length(T)x4 donde cada columna 
      representa las siguientes variables 
                 [m , h , n, V] 
-      
+    
+   m, h, n  compuertas
+   V  potencial de acción
+
  Autor:  ROBERTO MÉNDEZ MÉNDEZ
                    
- Última revisión: 7 Sep 24
+ Última revisión: 9 Sep 24 v4
+
+ Matlab 2024a
 %}
 close all
 clear
@@ -34,7 +39,8 @@ numpasosRK = num2str(lrk);
 
 % Tamaño de paso fijo k= 0.31 (sin corrección de error) que induce error 
 % con ode23 ode45 y ode113 ; "Correcto" con: ode78, ode89, ode23tb
-% Con ode45 pareciera ser correcto aunque no lo es.
+% Con ode45 pareciera ser correcto aunque no lo esy con k=.33 el error
+% es inmediato
 k2=.31;
 options = odeset('MaxStep', k2, 'InitialStep', k2, ...
            'AbsTol', 10^6,'Refine', 1);
@@ -58,7 +64,7 @@ numpasosRK45f = num2str(lRK45f2);
 k3=.0023;
 options = odeset('MaxStep', k3, 'InitialStep', k3, ...
          'AbsTol',10^6,'Refine', 1);   
-[Tf3,Yf3] = ode45(@Noble1962,t,x,options);
+[Tf3,Yf3] = ode45(@Noble1962_v2,t,x,options);
 lRK45f1 = length(Tf3)-1;
 numpasosRK45f2 = num2str(lRK45f1);
 
