@@ -9,7 +9,7 @@ Referencias:
 
 Modelo a Programar:
  
-  dh/dt = alpha_n(1 − n) − beta_n*n
+  dn/dt = alpha_n(1 − n) − beta_n*n
   dh/dt = alpha_h(1 − h) − beta_h*h
   dm/dt = alpha_m(1 − m) − beta_m*m
   dV/dt = -(I_Na + i_K + I_L)/Cm
@@ -20,21 +20,23 @@ FUNCIÓN PROGRAMADA
  La función  Noble1962(t,x) consta de dos parámetros t,x
                 (t,x)
  donde
-   t es intervalo de tiempo 
-   x es el vector de valores iniciales
+   t es el intervalo de tiempo 
+   x = [n0 h0 m0 V0] es el vector de valores iniciales
   
   Interpretación de los x(i)
-   x(1)  valores de n calculado usando  dn/dt
-   x(2)  valores de h calculado usando  dh/dt
-   x(3)  valores de m calculado usando  dm/dt
-   x(4)  valores de V calculado usando  dV/dt  el Potencial de Membrana 
+   x(1)  valores de n calculados usando  dn/dt
+   x(2)  valores de h calculados usando  dh/dt
+   x(3)  valores de m calculados usando  dm/dt
+   x(4)  valores de V calculados usando  dV/dt  el Potencial de Membrana 
 
  Autores: ROBERTO MÉNDEZ MÉNDEZ
  
- Última revisión: Sep 2024
+ Última revisión: 9 Sep 2024 v4
+
+ Matlab 2024a
 %}
 
-function dydt = Noble1962(t,x)
+function dydt = Noble1962_v2(t,x)
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %Capacitancia de la membrana 
